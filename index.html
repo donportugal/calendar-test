@@ -30,8 +30,16 @@
 
       <div class="days" v-for="(day, index) in filterDays(month)">
 
+        <div v-if="index === 0" v-for="qty in day.dayOfWeek" class="day">
+          &nbsp;
+        </div>
+
         <div class="day" :class="{weekday: !isWeekend(day), weekend: isWeekend(day)}">
           {{ day.number }}
+        </div>
+
+        <div v-if="index === (filterDays(month).length - 1)" v-for="qty in 6 - day.dayOfWeek" class="day">
+          &nbsp;
         </div>
 
       </div>
